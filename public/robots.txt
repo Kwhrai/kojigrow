@@ -1,2 +1,3 @@
 User-agent: *
 Allow: /
+Sitemap: https://kojigrow.oryzae.workers.dev/sitemap.xml

@@ -8,7 +8,7 @@ function announce(message) {
   feedbackTimer = setTimeout(() => { feedback.hidden = true; }, 4000);
 }
 shareButton.addEventListener('click', async () => {
-  const data = { title: 'KOJIGROW', text: 'Japanese roots. West Coast curiosity.', url: location.origin + '/' };
+  const data = { title: document.title, text: document.querySelector('meta[name="description"]')?.content || 'Japanese roots. West Coast curiosity.', url: document.querySelector('link[rel="canonical"]')?.href || location.origin + location.pathname };
   try {
     if (navigator.share) await navigator.share(data);
     else if (navigator.clipboard && window.isSecureContext) {
