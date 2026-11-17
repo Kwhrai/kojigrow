@@ -1,0 +1,11 @@
+{
+  "name": "kojigrow",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "python3 -m http.server 4173 --directory public",
+    "deploy": "wrangler deploy",
+    "check": "node --check public/site.js"
+  },
+  "devDependencies": { "wrangler": "^4.0.0" }
+}
