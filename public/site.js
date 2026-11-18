@@ -1,3 +1,4 @@
+const isJapanese = document.documentElement.lang === 'ja';
 const shareButton = document.querySelector('.share');
 const feedback = document.querySelector('#share-feedback');
 let feedbackTimer;
@@ -13,10 +14,10 @@ shareButton.addEventListener('click', async () => {
     if (navigator.share) await navigator.share(data);
     else if (navigator.clipboard && window.isSecureContext) {
       await navigator.clipboard.writeText(data.url);
-      announce('Link copied. Share a little culture.');
-    } else announce('Share this page using the URL in your address bar.');
+      announce(isJapanese ? 'リンクをコピーしました。' : 'Link copied. Share a little culture.');
+    } else announce(isJapanese ? 'アドレスバーのURLをコピーして共有してください。' : 'Share this page using the URL in your address bar.');
   } catch (error) {
-    if (error.name !== 'AbortError') announce('Share this page using the URL in your address bar.');
+    if (error.name !== 'AbortError') announce(isJapanese ? 'アドレスバーのURLをコピーして共有してください。' : 'Share this page using the URL in your address bar.');
   }
 });
 document.querySelector('#year').textContent = new Date().getFullYear();
